@@ -10,7 +10,7 @@ function isPrime(x) {
 }
 
 function gap(g, m, n) {
-  for (let number = m; number <= n; number++) {
+  for (let number = m; number < n; number++) {
     const next = number + g
     if (isPrime(number) && isPrime(next)) {
       const slice = [...range(number + 1, next - 1)]
@@ -20,3 +20,5 @@ function gap(g, m, n) {
   }
   return null
 }
+
+module.exports = { gap }
