@@ -1,36 +1,32 @@
-function evaluator(instr, regx) {
+function evaluator(instr, regs) {
   let steps = 1
   const instructions = ['mov', 'inc', 'dec', 'jnz']
   const tokens = instr.split(' ')
+  const [x, y, z] = tokens
 
-  const keyword = tokens[0]
-  const identifier = tokens[1]
+  if (!instructions.includes(x)) throw Error('Token unkwon: ' + x + ' at ' + instr)
 
-  if (!instructions.includes(keyword)) return null
-
-  if (keyword === 'mov') {
-    const value = isNaN(tokens[2]) ? regx[tokens[2]] : tokens[2]
-    regx[identifier] = +value
-  } else if (keyword === 'inc') {
-    regx[identifier] = +regx[identifier] + 1
-  } else if (keyword === 'dec') {
-    regx[identifier] = +regx[identifier] - 1
-  } else if (keyword === 'jnz') {
-    const value = isNaN(tokens[1]) ? regx[tokens[1]] : tokens[1]
-    if (value !== 0) steps = +tokens[2]
+  if (x === 'mov') {
+    regs[y] = +(isNaN(z) ? regs[z] : z)
+  } else if (x === 'inc') {
+    regs[y] = +regs[y] + 1
+  } else if (x === 'dec') {
+    regs[y] = +regs[y] - 1
+  } else if (x === 'jnz') {
+    if (regs[tokens[1]] !== 0) steps = +z
   }
 
-  return { regx, steps }
+  return { regs, steps }
 }
 
 function simple_assembler(program) {
-  let regx = {}
+  let regs = {}
   for (let i = 0; i < program.length; ) {
-    const evaluated = evaluator(program[i], regx)
-    regx = evaluated.regx
-    i += evaluated.steps
+    const evaluation = evaluator(program[i], regs)
+    regs = evaluation.regs
+    i += evaluation.steps
   }
-  return regx
+  return regs
 }
 
 module.exports = { simple_assembler }

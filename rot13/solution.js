@@ -4,18 +4,18 @@ function rotate(alphabet, letter, r = 13) {
   return alphabet[index]
 }
 
-function rot13(message) {
+function cipher(char) {
   const lowers = 'abcdefghijklmnopqrstuvwxyz'
   const uppers = lowers.toUpperCase()
 
-  return message
-    .split('')
-    .map(char => {
-      if (!/[a-zA-Z]/.test(char)) return char
-      const alpha = char === char.toUpperCase() ? uppers : lowers
-      return rotate(alpha, char)
-    })
-    .join('')
+  if (!/[a-zA-Z]/.test(char)) return char
+  const alpha = char === char.toUpperCase() ? uppers : lowers
+
+  return rotate(alpha, char)
+}
+
+function rot13(message) {
+  return message.split('').map(cipher).join('')
 }
 
 module.exports = { rot13 }

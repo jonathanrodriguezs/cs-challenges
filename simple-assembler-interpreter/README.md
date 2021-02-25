@@ -2,7 +2,7 @@
 
 ## Source: Codewars
 
-This is the first part of this kata series. Second part is here. https://www.codewars.com/kata/assembler-interpreter-part-ii/
+This is the first part of this kata series. Second part is [here](https://www.codewars.com/kata/assembler-interpreter-part-ii/).
 
 We want to create a simple interpreter of assembler which will support the following instructions:
 
@@ -49,4 +49,4 @@ Map("a"->1)
 
 This kata is based on the Advent of Code 2016 - day 12
 
-Source: https://www.codewars.com/kata/58e24788e24ddee28e00005
+Source: [https://www.codewars.com/kata/58e24788e24ddee28e00005]
