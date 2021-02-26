@@ -16,3 +16,5 @@ Your function will receive 2 arguments: a polynomial as a string, and a point to
 differenatiate("12x+2", 3)      ==>   returns 12
 differenatiate("x^2+3x+2", 3)   ==>   returns 9
 ```
+
+Source: https://www.codewars.com/kata/566584e3309db1b17d000027
